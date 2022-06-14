@@ -27,6 +27,7 @@
     </a-form-item>
     <a-form-item :wrapper-col="{ span: 24 }">
       <a-button
+        :loading="store.state.system.loading"
         :disabled="canSubmit"
         :type="canSubmit ? 'dashed' : 'primary'"
         block
@@ -45,6 +46,10 @@ import {
   Checkbox as ACheckbox,
   Button as AButton,
 } from "ant-design-vue";
+import { post } from "@/utils/http";
+import store from "@/store";
+import { useRouter } from "vue-router";
+
 const { Item: AFormItem } = AForm;
 const { Password: AInputPassword } = AInput;
 
@@ -53,8 +58,8 @@ const formState = reactive({
   password: "",
   remember: false,
 });
-
 const canSubmit = ref(true);
+const router = useRouter();
 
 watch(formState, (value) => {
   if (value.username && value.password) {
@@ -65,7 +70,12 @@ watch(formState, (value) => {
 });
 
 const onFinish = () => {
-  console.log(formState);
+  let data = Object.assign({}, {}, formState);
+  Reflect.deleteProperty(data, "remember");
+  post("/login", data).then((res) => {
+    store.commit("setUser", res);
+    router.replace({ name: "home" });
+  });
 };
 </script>
 

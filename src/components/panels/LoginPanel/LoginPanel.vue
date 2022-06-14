@@ -7,7 +7,9 @@
       <div class="mlogo">
         <img src="/images/logo.png" />
       </div>
-      <div class="welcome">你好，{{ user.name ? user.name : "陌生人" }}</div>
+      <div class="welcome">
+        你好，{{ user.info.name ? user.info.name : "陌生人" }}
+      </div>
       <div class="minlogo">
         <img src="/images/minlogo.svg" />
         <span> 活动集成管理系统</span>

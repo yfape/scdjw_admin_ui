@@ -22,4 +22,7 @@ body {
   overflow: hidden;
   background-color: #f2f6fe !important;
 }
+#app {
+  height: 100%;
+}
 </style>
