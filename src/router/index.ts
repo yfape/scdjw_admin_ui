@@ -18,9 +18,10 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import("@/views/datacenter/datacenterView.vue"),
       },
       {
-        path: "article",
-        name: "article",
-        component: () => import("@/views/article/articleView.vue"),
+        path: "articles",
+        name: "articles",
+        component: () =>
+          import("@/views/article/ArticleManage/ArticleManage.vue"),
       },
       {
         path: "col",
@@ -36,6 +37,11 @@ const routes: Array<RouteRecordRaw> = [
         path: "self",
         name: "self",
         component: () => import("@/views/self/selfView.vue"),
+      },
+      {
+        path: "article/edit/:articleId?",
+        name: "article_edit",
+        component: () => import("@/views/article/ArticleEdit/ArticleEdit.vue"),
       },
     ],
   },

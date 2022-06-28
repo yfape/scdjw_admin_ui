@@ -18,8 +18,10 @@ const http = Axios.create({
   baseURL: baseURL,
 });
 
-http.defaults.headers.common["Content-Type"] = "application/json;charset=UTF-8";
-
+http.defaults.headers = {
+  ...http.defaults.headers,
+  ...{ "Content-Type": "application/json" },
+};
 // 请求拦截器
 http.interceptors.request.use(
   (config) => {
@@ -40,6 +42,7 @@ http.interceptors.request.use(
 // 响应拦截器
 http.interceptors.response.use(
   (res) => {
+    console.log(res);
     if (typeof res.data !== "object") {
       Promise.reject(new Error("类型错误"));
     }
@@ -47,6 +50,7 @@ http.interceptors.response.use(
     return res.data;
   },
   (err) => {
+    console.log(err);
     store.commit("setLoading");
     return Promise.reject(err); //返回错误
   }
@@ -59,7 +63,6 @@ export function post(url: string, data?: object) {
         resolve(res);
       },
       (err) => {
-        console.log(err);
         reject(err);
       }
     );

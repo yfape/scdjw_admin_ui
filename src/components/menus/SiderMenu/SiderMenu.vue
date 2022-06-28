@@ -42,7 +42,7 @@
           </template>
           <div class="t-c">数据中心</div>
         </a-menu-item>
-        <a-menu-item key="/article">
+        <a-menu-item key="/articles">
           <template #icon>
             <ContainerOutlined />
           </template>
@@ -75,14 +75,14 @@
         <template #icon>
           <PoweroffOutlined />
         </template>
-        <div class="t-c">退&emsp;&emsp;出</div>
+        <div class="t-c">安全退出</div>
       </a-menu-item>
     </a-menu>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { ref } from "vue";
+import { ref, watch } from "vue";
 import { Menu as AMenu, Button as AButton } from "ant-design-vue";
 import {
   HomeOutlined,
@@ -113,11 +113,18 @@ const triggleCollapsed = () => {
 const changeRouter = (res: any) => {
   router.push(res.key);
 };
+watch(
+  () => router.currentRoute.value.path,
+  (toPath) => {
+    selectKeys.value = [toPath];
+  },
+  { immediate: true, deep: true }
+);
 </script>
 
 <style lang="less" scoped>
 #sider-menu-container {
-  height: 100%;
+  min-height: 100%;
   padding: 20px 0px;
   display: flex;
   flex-direction: column;

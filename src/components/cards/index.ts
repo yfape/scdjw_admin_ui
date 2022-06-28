@@ -6,10 +6,10 @@ CardBlock1.install = function (app: any) {
   return app;
 };
 
-export interface Type_CardBlock1 {
-  img?: string;
+interface type_cardBlock1_props {
+  img: string;
   title: string;
   desc: string;
 }
 
-export default CardBlock1;
+export { type type_cardBlock1_props, CardBlock1 };

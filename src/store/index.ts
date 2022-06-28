@@ -15,6 +15,10 @@ interface type_theme {
   collapsed?: boolean;
 }
 
+interface type_articleStatus {
+  [key: number]: string;
+}
+
 export default createStore({
   state: {
     config: config,
@@ -126,3 +130,5 @@ export default createStore({
   actions: {},
   modules: {},
 });
+
+export { type type_articleStatus };

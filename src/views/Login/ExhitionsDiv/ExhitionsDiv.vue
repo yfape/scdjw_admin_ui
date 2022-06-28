@@ -11,9 +11,9 @@
 </template>
 
 <script lang="ts" setup>
-import CardBlock1, { Type_CardBlock1 } from "@/components/cards/CardBlock1";
+import { CardBlock1, type_cardBlock1_props } from "@/components/cards";
 const base_img_url = "/images/";
-const base_data: Type_CardBlock1[] = [
+const base_data: type_cardBlock1_props[] = [
   {
     img: "yqmap.png",
     title: "疫情地图管理系统",
@@ -50,7 +50,7 @@ const base_data: Type_CardBlock1[] = [
     desc: "可视化编辑VR场景，管理VR展示，VR引擎管理",
   },
 ];
-var data: Type_CardBlock1[] = [];
+var data: type_cardBlock1_props[] = [];
 for (let i = 0; i < 10; i++) {
   data = data.concat(base_data);
 }
