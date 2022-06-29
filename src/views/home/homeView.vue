@@ -16,6 +16,7 @@
         <ChartBlock1 :style="{ height: contentHeight + 'px' }" />
       </a-col>
     </a-row>
+    <div v-extra>test direactive</div>
   </div>
 </template>
 
@@ -25,7 +26,6 @@ import PersonCard from "./PersonCard/PersonCard.vue";
 import DailyTask from "./DailyTask/DailyTask.vue";
 import ChartBlock1 from "@/components/charts/ChartBlock1/ChartBlock1.vue";
 const { Text: aTypographyText } = Typography;
-
 const contentHeight = window.innerHeight * 0.48;
 </script>
 

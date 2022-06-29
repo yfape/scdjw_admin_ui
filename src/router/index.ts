@@ -10,10 +10,13 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: "",
         name: "home",
+        meta: {
+          keepAlive: true,
+        },
         component: () => import("@/views/home/homeView.vue"),
       },
       {
-        path: "datacenter",
+        path: "datacenter/:id?",
         name: "datacenter",
         component: () => import("@/views/datacenter/datacenterView.vue"),
       },

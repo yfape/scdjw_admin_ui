@@ -9,7 +9,11 @@
     </a-layout-sider>
     <a-layout>
       <a-layout-content>
-        <router-view />
+        <router-view v-slot="{ Component }">
+          <keep-alive include="homeView,datacenterView">
+            <component :is="Component"></component>
+          </keep-alive>
+        </router-view>
       </a-layout-content>
     </a-layout>
   </a-layout>
@@ -19,7 +23,6 @@
 import { Layout as ALayout } from "ant-design-vue";
 import SiderMenu from "@/components/menus/SiderMenu/SiderMenu.vue";
 import store from "@/store";
-
 const { Sider: ALayoutSider, Content: ALayoutContent } = ALayout;
 
 const theme = store.getters.theme;
